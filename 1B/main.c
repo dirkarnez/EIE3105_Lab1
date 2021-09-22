@@ -1,10 +1,5 @@
 #include <avr/io.h>
 
-void delay(void) {
-	unsigned long i;
-	for (i = 0; i < 100000; i++);
-}
-
 int main(void)
 {
 	DDRB = 0x00;
@@ -20,7 +15,6 @@ int main(void)
 		current_pb = PINB;
 		
 		if (((current_pb & 0x10) == 0x10) && ((previous_pb & 0x10) == 0x00) ) {
-			//delay();
 			if (last_state == 0) {
 				last_state = 1;
 				PORTD = 0xFF;
